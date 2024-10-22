@@ -64,6 +64,18 @@ public class Evento {
 		System.out.println ("Posto prenotato con successo!" + " Sono rimasti: " + (postiTotale - postiPrenotati) + " posti disponibili!");
 	}
 	
+	public void prenotaPosto (int posti) {
+		
+		if (data.isBefore(LocalDate.now())) {
+			System.out.println ("Mi dispiace non è possibile prenotare, l'evento è già passato!");
+		}
+		
+		if (postiPrenotati > postiTotale) {
+			System.out.println ("Mi dispiace non è possibile prenotare, l'evento è SOLD OUT!");
+		}
+
+	}
+	
 	public void disdiciPosto () {
 		
 		if (data.isBefore(LocalDate.now())) {
