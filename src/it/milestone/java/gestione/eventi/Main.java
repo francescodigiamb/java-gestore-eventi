@@ -9,6 +9,8 @@ public class Main {
 
 	public static void main(String [] args) {
 /*		
+ * 		PROVA STEP 1
+ * 
 		Evento primoEvento = new Evento ("Concerto", LocalDate.of(2024, 12, 25), 150);
 		System.out.println (primoEvento);
 		
@@ -23,14 +25,8 @@ public class Main {
 		System.out.println (eventoPassato);
 */
 	
-/*
- * Creare una classe Main di test, in cui si chiede all’utente di inserire un nuovo evento con tutti i parametri. 
- * Dopo che l’evento è stato istanziato, chiedere all’utente se e quante prenotazioni vuole fare e provare ad effettuarle, implementando opportuni controlli
- * Stampare a video il numero di posti prenotati e quelli disponibili
- * Chiedere all’utente se e quanti posti vuole disdire
- * Provare ad effettuare le disdette, implementando opportuni controlli
- * Stampare a video il numero di posti prenotati e quelli disponibili
-*/
+// 		STEP 2
+		
 		Scanner scan = new Scanner (System.in);
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		
@@ -75,18 +71,55 @@ public class Main {
 		System.out.println ("La data dell'Evento è il: " + nuovoEvento.getData());
 		System.out.println ("La capienza massima dell'Evento è: " + nuovoEvento.getNumeroPostiTotale());
 		
-		System.out.println("Sono disponibili dei posti, vuoi prenotarli?");
-		String risposta = scan.next();
+		boolean rispostaPosti = false;
 		
+		while (!rispostaPosti) {
+			System.out.println("Sono disponibili dei posti, vuoi prenotarli? (si/no)");
+			String risposta = scan.next();
 		if (risposta.equalsIgnoreCase("si")) {
 			System.out.println("Quanti posti vuoi prenotare?");
         	int postiDaPrenotare = scan.nextInt();
-        	nuovoEvento.prenotaPosto(postiDaPrenotare);
-        	System.out.println ("Posto prenotato con successo!" + " Sono rimasti: " + (postiTotali - postiDaPrenotare) + " posti disponibili!");
-        	} else {
+        	for (int i = 0; i < postiDaPrenotare; i++) {
+        		nuovoEvento.prenotaPosto();
+        	}
+        	System.out.println ("Posto/i prenotato/i con successo!" + " Sono rimasti: " + (postiTotali - postiDaPrenotare) + " posti disponibili!");
+        	rispostaPosti = true;
+        	} else if (risposta.equalsIgnoreCase("no")) {
         		System.out.println("Sono disponibili ancora: " + postiTotali);
+        		rispostaPosti = true;
+        	} else {
+        		System.out.println("Errore! C'è stato un'errore nella digitazione, riprova!");
         	}
 		
-        } 
+		}
+		
+		System.out.println("Sono stati prenotati: " + nuovoEvento.getNumeroPostiPrenotati() + " posti");
+		System.out.println("Sono disponibili ancora: " + nuovoEvento.postiDisponibili() + " posti");
+		
+		boolean postiDisdetti = false;
+		
+		while (!postiDisdetti) {
+			System.out.println("Hai dei biglietti prenotati e vuoi disdirli? (si/no)");
+			String disdetta = scan.next();
+		if (disdetta.equalsIgnoreCase("si")) {
+			System.out.println("Quanti posti vuoi disdire?");
+        	int postiDaDisdire = scan.nextInt();
+        	for (int i = 0; i < postiDaDisdire; i++) {
+        		nuovoEvento.prenotaPosto();
+        	}
+        		System.out.println ("Posto/i disdetto/i con successo!" + " Attualmente ci sono ancora " + (nuovoEvento.postiDisponibili() + postiDaDisdire) + " posti disponibili!");
+        		postiDisdetti= true;
+        	} else if (disdetta.equalsIgnoreCase("no")) {
+        		System.out.println("Sono disponibili ancora: " + postiTotali);
+        		postiDisdetti = true;
+        	} else {
+        		System.out.println("Errore! C'è stato un'errore nella digitazione, riprova!");
+        	}
+		}
+		
+		System.out.println("Sono stati prenotati: " + nuovoEvento.getNumeroPostiPrenotati() + " posti");
+		System.out.println("Sono disponibili ancora: " + nuovoEvento.postiDisponibili() + " posti");
+		
+     } 
 }
 	

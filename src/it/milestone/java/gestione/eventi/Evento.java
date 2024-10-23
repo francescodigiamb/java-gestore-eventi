@@ -61,19 +61,7 @@ public class Evento {
 		}
 		
 		postiPrenotati ++;
-		System.out.println ("Posto prenotato con successo!" + " Sono rimasti: " + (postiTotale - postiPrenotati) + " posti disponibili!");
-	}
-	
-	public void prenotaPosto (int posti) {
-		
-		if (data.isBefore(LocalDate.now())) {
-			System.out.println ("Mi dispiace non è possibile prenotare, l'evento è già passato!");
-		}
-		
-		if (postiPrenotati > postiTotale) {
-			System.out.println ("Mi dispiace non è possibile prenotare, l'evento è SOLD OUT!");
-		}
-
+//		System.out.println ("Posto prenotato con successo!" + " Sono rimasti: " + (postiTotale - postiPrenotati) + " posti disponibili!");
 	}
 	
 	public void disdiciPosto () {
@@ -86,8 +74,12 @@ public class Evento {
 			System.out.println ("Mi dispiace non ci sono prenotazioni da annullare per questo evento!");
 		}
 		
-		postiPrenotati = postiPrenotati - 1;
-		System.out.println ("Prenotazione annullata con successo!" + " Sono rimasti: " + (postiTotale - postiPrenotati) + " posti disponibili!");
+		postiPrenotati = postiPrenotati --;
+//		System.out.println ("Prenotazione annullata con successo!" + " Sono rimasti: " + (postiTotale - postiPrenotati) + " posti disponibili!");
+	}
+	
+	public int postiDisponibili () {
+		return postiTotale - postiPrenotati;
 	}
 	
     private String formattaData() {
