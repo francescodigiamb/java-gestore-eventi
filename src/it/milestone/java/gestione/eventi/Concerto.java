@@ -1,7 +1,9 @@
 package it.milestone.java.gestione.eventi;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 /*
  * Step 3
  * Creare una classe Concerto che estende Evento, che ha anche gli attributi :
@@ -12,7 +14,6 @@ import java.time.LocalTime;
  *  Fare l’ override del metodo toString()
  *   in modo che venga restituita una stringa del tipo: data e ora formattata - titolo - prezzo formattato
  */
-import java.time.format.DateTimeFormatter;
 
 
 public class Concerto extends Evento {
@@ -43,6 +44,19 @@ public class Concerto extends Evento {
 		this.prezzo = prezzo;
 	}
 	
+	public String formattaDataOra () {
+    DateTimeFormatter formatData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    DateTimeFormatter formOra = DateTimeFormatter.ofPattern("HH:mm");
+	return  data.format(formatData) + "-" + getOra().format(formOra);
+	}
 	
-
+    public String formattaPrezzo() {
+        DecimalFormat formatPrezzo = new DecimalFormat("##,##0.00€");
+        return formatPrezzo.format(prezzo);
+    }
+	
+	@Override 
+	public String toString () {
+		return formattaDataOra() + " - " + titolo + " - " + formattaPrezzo();
+	}
 }

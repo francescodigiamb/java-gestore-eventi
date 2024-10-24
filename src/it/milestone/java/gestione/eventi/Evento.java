@@ -5,8 +5,8 @@ import java.time.format.DateTimeFormatter;
 
 public class Evento {
 
-	private String titolo;
-	private LocalDate data;
+	protected String titolo;
+	protected LocalDate data;
 	private int postiTotale;
 	private int postiPrenotati;
 	
@@ -82,7 +82,7 @@ public class Evento {
 		return postiTotale - postiPrenotati;
 	}
 	
-    private String formattaData() {
+    public String formattaData() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return data.format(formatter);
     }

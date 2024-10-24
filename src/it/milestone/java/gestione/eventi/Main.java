@@ -1,6 +1,7 @@
 package it.milestone.java.gestione.eventi;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
@@ -26,7 +27,8 @@ public class Main {
 */
 	
 // 		STEP 2
-		
+
+/*
 		Scanner scan = new Scanner (System.in);
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		
@@ -119,6 +121,19 @@ public class Main {
 		
 		System.out.println("Sono stati prenotati: " + nuovoEvento.getNumeroPostiPrenotati() + " posti");
 		System.out.println("Sono disponibili ancora: " + nuovoEvento.postiDisponibili() + " posti");
+*/
+		
+//		STEP3
+		
+		Concerto evento = new Concerto("Concerto di Natale", LocalDate.of(2024, 12, 25), 200);
+		evento.setOra(LocalTime.of(12, 00));
+		System.out.println ("L'ora del concerto è: " + evento.getOra());
+
+		evento.setPrezzo(5.00);
+		System.out.println ("Il prezzo del biglietto è: " + evento.getPrezzo());
+		
+		System.out.println(evento);
+		
 		
      } 
 }
