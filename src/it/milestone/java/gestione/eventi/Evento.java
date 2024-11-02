@@ -9,7 +9,7 @@ public class Evento {
 	protected LocalDate data;
 	private int postiTotale;
 	private int postiPrenotati;
-	
+	// Costruttore 
 	public Evento (String titolo, LocalDate data, int postiTotale) {
 		this.titolo = titolo;
 		this.data = data;
