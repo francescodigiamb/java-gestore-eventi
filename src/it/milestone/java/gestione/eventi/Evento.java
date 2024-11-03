@@ -9,8 +9,9 @@ public class Evento {
 	protected LocalDate data;
 	private int postiTotale;
 	private int postiPrenotati;
+	
 	// Costruttore 
-	public Evento (String titolo, LocalDate data, int postiTotale) {
+	public Evento (String titolo, LocalDate data, int postiTotale) throws IllegalArgumentException {
 		this.titolo = titolo;
 		this.data = data;
 		this.postiTotale = postiTotale;
@@ -23,6 +24,7 @@ public class Evento {
         if (data.isBefore(LocalDate.now())) {
             throw new IllegalArgumentException("La data dell'evento non può essere passata!");
         }
+
 		
 	}
 	
@@ -58,10 +60,12 @@ public class Evento {
 		
 		if (postiPrenotati > postiTotale) {
 			System.out.println ("Mi dispiace non è possibile prenotare, l'evento è SOLD OUT!");
+		} else {
+			
+			postiPrenotati ++;
+			System.out.println ("Posto prenotato con successo!");
 		}
 		
-		postiPrenotati ++;
-//		System.out.println ("Posto prenotato con successo!" + " Sono rimasti: " + (postiTotale - postiPrenotati) + " posti disponibili!");
 	}
 	
 	public void disdiciPosto () {
@@ -72,10 +76,12 @@ public class Evento {
 		
 		if (postiPrenotati <= 0) {
 			System.out.println ("Mi dispiace non ci sono prenotazioni da annullare per questo evento!");
+		} else {
+			
+			postiPrenotati --;
+			System.out.println ("Prenotazione annullata con successo!");
 		}
 		
-		postiPrenotati = postiPrenotati --;
-//		System.out.println ("Prenotazione annullata con successo!" + " Sono rimasti: " + (postiTotale - postiPrenotati) + " posti disponibili!");
 	}
 	
 	public int postiDisponibili () {

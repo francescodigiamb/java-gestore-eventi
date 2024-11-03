@@ -1,6 +1,7 @@
 package it.milestone.java.gestione.eventi;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -60,12 +61,15 @@ public class ProgrammaEventi  {
     public void svuotaEventi() {
         eventi.clear();
     }
-    // Metodo che restituisce una stringa che mostra il titolo del programma e tutti gli eventi ordinati per data
+    // Metodo che restituisce una stringa che mostra il titolo del programma
+//    e tutti gli eventi ordinati per data
     public String toString() {
         StringBuilder dataTitolo = new StringBuilder("Programma: " + titolo + "\n");
-        
-        eventi.sort(Comparator.comparing(Evento::getData));  // Ordina gli eventi per data
-        
+//       Ordina gli eventi per data, la doppia punteggiatura sta ad indicare
+//		 l'operatore di method reference in Java è una scorciatoia che indica 
+//       usa il metodo getData di Evento per ogni oggetto della lista.
+        Collections.sort(eventi, Comparator.comparing(Evento::getData)); 
+//     for-each, è come se gli stiamo dicendo: per ogni evento nella lista eventi, appendi data e evento 
         for (Evento evento : eventi) {
             dataTitolo.append(evento.getData()).append(" - ").append(evento.getTitolo()).append("\n");
         }
