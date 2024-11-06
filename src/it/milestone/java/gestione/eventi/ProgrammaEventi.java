@@ -26,24 +26,24 @@ public class ProgrammaEventi  {
 
 	private String titolo;
 	private List<Evento> eventi;
-	// Costruttore
+	
 	public ProgrammaEventi (String titolo) {
 		this.titolo = titolo;
 		this.eventi = new ArrayList<>();
 	}
-	// Metodo get per il titolo
+	
 	public String getTitolo () {
 		return titolo;
 	}
-	// Metodo get per l'array
+	
 	public List<Evento> getEventi () {
 		return eventi;
 	}
-	// Metodo per aggiungere un evento all'arraylist
+	
 	public void aggiungiEvento (Evento evento) {
 		eventi.add(evento);
 	} 
-	// Metodo che restituisce gli eventi presenti in una determinata data
+	
     public List<Evento> getEventiData(LocalDate data) {
         List<Evento> eventiInData = new ArrayList<>();
         for (Evento evento : eventi) {
@@ -56,15 +56,15 @@ public class ProgrammaEventi  {
         }
         return eventiInData;
     }
-	// Metodo che restituisce il totale degli eventi presenti	
+		
     public int getNumeroEventi() {
         return eventi.size();
     }
-    // Metodo che svuota l'array
+    
     public void svuotaEventi() {
         eventi.clear();
     }
-    // Metodo che restituisce una stringa con il titolo del programma e tutti gli eventi ordinati per data
+    
     @Override
     public String toString() {
         // Ordina gli eventi per data

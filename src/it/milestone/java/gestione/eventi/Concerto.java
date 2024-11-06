@@ -21,35 +21,35 @@ public class Concerto extends Evento {
 	private LocalTime ora;
 	private double prezzo;
 	
-	// Costruttore 
+	 
 	public Concerto(String titolo, LocalDate data, int postiTotale) {
 		super(titolo, data, postiTotale);
 		this.ora = getOra();
 		this.prezzo = getPrezzo();
 	}
-	// Metodo get per l'ora
+	
 	public LocalTime getOra () {
 		return ora;
 	}
-	// Metodo set per l'ora 
+	 
 	public void setOra (LocalTime ora) {
 		this.ora = ora;
 	}
-	// Metodo get per il prezzo 
+	
 	public double getPrezzo () {
 		return prezzo;
 	}
-	// Metodo set per il prezzo
+	
 	public void setPrezzo (double prezzo) {
 		this.prezzo = prezzo;
 	}
-	// Metodo per formattare la data e l'ora e restituirlo formato data 
+	 
 	public String formattaDataOra () {
     DateTimeFormatter formatData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     DateTimeFormatter formOra = DateTimeFormatter.ofPattern("HH:mm");
-	return  data.format(formatData) + "-" + getOra().format(formOra);
+	return  getData().format(formatData) + "-" + getOra().format(formOra);
 	}
-	// Metodo per formattare il prezzo e restituirlo formato stringa
+	
     public String formattaPrezzo() {
         DecimalFormat formatPrezzo = new DecimalFormat("##,##0.00€");
         return formatPrezzo.format(prezzo);
@@ -57,6 +57,6 @@ public class Concerto extends Evento {
 	
 	@Override 
 	public String toString () {
-		return formattaDataOra() + " - " + titolo + " - " + formattaPrezzo();
+		return formattaDataOra() + " - " + getTitolo() + " - " + formattaPrezzo();
 	}
 }
