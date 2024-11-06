@@ -46,6 +46,7 @@ public class ProgrammaEventi  {
 	
     public List<Evento> getEventiData(LocalDate data) {
         List<Evento> eventiInData = new ArrayList<>();
+//      Per ogni elemento di tipo Evento presente nella collezione eventi, esegui il blocco di codice che segue
         for (Evento evento : eventi) {
             if (evento.getData().equals(data)) {
                 eventiInData.add(evento);

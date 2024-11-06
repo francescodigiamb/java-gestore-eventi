@@ -5,3 +5,5 @@ bin/it/milestone/java/gestione/eventi/Main.class
 bin/it/milestone/java/gestione/eventi/Evento.class
 bin/it/milestone/java/gestione/eventi/Concerto.class
 bin/it/milestone/java/gestione/eventi/ProgrammaEventi.class
+bin/it/milestone/java/gestione/eventi/Esercizio.class
+src/it/milestone/java/gestione/eventi/Esercizio.java
