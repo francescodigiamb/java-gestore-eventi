@@ -49,7 +49,10 @@ public class ProgrammaEventi  {
         for (Evento evento : eventi) {
             if (evento.getData().equals(data)) {
                 eventiInData.add(evento);
-            }
+            } 
+        }
+        if (eventiInData.isEmpty()) {
+        	System.out.println("Nessun evento trovato.");
         }
         return eventiInData;
     }
@@ -61,19 +64,21 @@ public class ProgrammaEventi  {
     public void svuotaEventi() {
         eventi.clear();
     }
-    // Metodo che restituisce una stringa che mostra il titolo del programma
-//    e tutti gli eventi ordinati per data
+    // Metodo che restituisce una stringa con il titolo del programma e tutti gli eventi ordinati per data
+    @Override
     public String toString() {
-        StringBuilder dataTitolo = new StringBuilder("Programma: " + titolo + "\n");
-//       Ordina gli eventi per data, la doppia punteggiatura sta ad indicare
-//		 l'operatore di method reference in Java è una scorciatoia che indica 
-//       usa il metodo getData di Evento per ogni oggetto della lista.
-        Collections.sort(eventi, Comparator.comparing(Evento::getData)); 
-//     for-each, è come se gli stiamo dicendo: per ogni evento nella lista eventi, appendi data e evento 
-        for (Evento evento : eventi) {
-            dataTitolo.append(evento.getData()).append(" - ").append(evento.getTitolo()).append("\n");
+        // Ordina gli eventi per data
+        Collections.sort(eventi, (e1, e2) -> e1.getData().compareTo(e2.getData()));
+
+        StringBuilder dataTitolo = new StringBuilder(titolo + ":\n");
+
+        if (eventi.isEmpty()) {
+            dataTitolo.append("Nessun evento trovato.");
+        } else {
+            for (Evento evento : eventi) {
+                dataTitolo.append("- ").append(evento.toString()).append("\n");
+            }
         }
-        
         return dataTitolo.toString();
     }
     

@@ -134,8 +134,8 @@ public class Main {
         System.out.println("Numero di eventi: " + programma.getNumeroEventi());
         
         // Filtraggio degli eventi per una data specifica
-        System.out.println("Eventi presenti il 23 Dicembre");
-        for (Evento evento : programma.getEventiData(LocalDate.of(2024, 12, 23))) {
+        System.out.println("Evento/i presenti in una determinata data");
+        for (Evento evento : programma.getEventiData(LocalDate.of(2024, 12, 25))) {
             System.out.println("- " + evento.getTitolo());
         }
       
